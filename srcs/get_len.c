@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_len.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/07 02:08:42 by malfwa            #+#    #+#             */
+/*   Updated: 2025/04/08 04:42:49 by malfwa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 int	get_arg(va_list ap, char const type, long long int *nb, int *base_len)
@@ -40,9 +52,9 @@ int	p_size(unsigned long int tmp, int base_len)
 
 int	get_len(char const type, ...)
 {
-	va_list	ap;
-	int	len;
-	int	base_len;
+	va_list			ap;
+	int				len;
+	int				base_len;
 	long long int	nb;
 
 	va_start(ap, type);
@@ -51,11 +63,7 @@ int	get_len(char const type, ...)
 		return (get_s_len(ap));
 	base_len = 10;
 	if (type == 'n')
-	{
-		nb = va_arg(ap, int);
-		if (nb < 0)
-			get_rule()->prefix = neg;
-	}
+		nb = get_number(ap);
 	else
 	{
 		len = get_arg(ap, type, &nb, &base_len);
@@ -64,11 +72,7 @@ int	get_len(char const type, ...)
 	}
 	if (get_rule()->dot && get_rule()->precision < 1 && !nb)
 		return (va_end(ap), 0);
-	len = (!nb);
-	if (type == 'p')
-		len = p_size(nb, base_len);
-	else
-		while (nb && ++len)
-			nb /= base_len;
-	return (va_end(ap), len + ((get_rule()->prefix != prefix) && get_rule()->prefix));
+	len = arg_size(nb, base_len, type);
+	return (va_end(ap), len + ((get_rule()->prefix != prefix) \
+	&& get_rule()->prefix));
 }

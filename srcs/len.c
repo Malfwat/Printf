@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   len.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 05:02:04 by malfwa            #+#    #+#             */
+/*   Updated: 2025/04/08 05:02:12 by malfwa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 #include <stdarg.h>
 
@@ -19,7 +31,6 @@ int	i_len(va_list lst, char const type)
 	if (get_rule()->precision > len)
 		len = get_rule()->precision;
 	return (len);
-
 }
 
 int	s_len(va_list lst, char const type)

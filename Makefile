@@ -2,7 +2,11 @@ NAME	=	libftprintf.a
 
 SRC	=	printf.c \
 		printf2.c \
+		printf3.c \
+		printf4.c \
+		printf5.c \
 		get_len.c \
+		get_len2.c \
 		len.c
 
 CC	=	cc
