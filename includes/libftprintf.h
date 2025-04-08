@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:28:37 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 05:28:38 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/08 15:12:29 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 # define FORMAT "cspdiuxX%"
 # define FLAG "-+ #0."
+
+# include "libft.h"
+
 
 enum	e_case
 {
@@ -84,7 +87,7 @@ int		*get_nb_printed(void);
 void	get_sizes(t_modif *rule, char const *str, int *i);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
-int		ft_strlen(char *str);
+// int		ft_strlen(char *str);
 int		fill(int size, char c);
 int		putstr_size(char *str, int size);
 int		ui_len(va_list lst, char const type);
@@ -103,5 +106,6 @@ void	print_addr(unsigned long addr);
 int		ft_puthexa(long long int nb, enum e_case casee);
 int		ft_printnbr(unsigned long int nb, unsigned int base_len, char *base);
 int		mesure_arg(char const *str, va_list lst);
+void	call_func(char *str, va_list lst);
 
 #endif /*LIBFTPRINTF_H*/

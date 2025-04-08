@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:45:13 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 05:27:38 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/08 15:12:21 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,16 @@
 #include <stdbool.h>
 #include "libftprintf.h"
 #include <stdio.h>
+// int	ft_strlen(char *str)
+// {
+// 	int	i;
 
-void	call_func(char *str, va_list lst)
-{
-	unsigned int	nb;
-	int				tmp;
+// 	i = 0;
+// 	while (str && str[i])
+// 		i++;
+// 	return (i);
+// }
 
-	tmp = is_in_str(*str, FORMAT) - 1;
-	if (tmp == c)
-		ft_putchar(va_arg(lst, int));
-	else if (tmp == s)
-		putstr_size(va_arg(lst, char *), get_rule()->precision);
-	else if (tmp == p)
-		print_addr(va_arg(lst, unsigned long));
-	else if (tmp == d)
-		ft_putnbr(va_arg(lst, int));
-	else if (tmp == i)
-		ft_putnbr(va_arg(lst, int));
-	else if (tmp == u)
-	{
-		nb = va_arg(lst, unsigned int);
-		if (!(!nb && get_rule()->dot && get_rule()->precision < 1))
-			ft_printnbr(nb, 10, "0123456789");
-	}
-	else if (tmp == x || tmp == X)
-		ft_puthexa(va_arg(lst, unsigned int), \
-		(int []){lower, upper}[tmp - x] - 1);
-	else if (tmp == percent)
-		ft_putchar('%');
-}
 
 void	left_align(char *str, va_list lst, int nb_char)
 {

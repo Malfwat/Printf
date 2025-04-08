@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 02:08:42 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 04:42:49 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/08 15:12:50 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_s_len(va_list ap)
 	char	*str;
 
 	str = va_arg(ap, char *);
-	if (ft_strlen(str) < get_rule()->precision && str)
+	if ((int)ft_strlen(str) < get_rule()->precision && str)
 		get_rule()->precision = ft_strlen(str);
 	return ((int []){ft_strlen(str), 6}[!str]);
 }

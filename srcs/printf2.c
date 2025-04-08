@@ -6,12 +6,12 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:45:18 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 05:02:33 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/08 15:08:57 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 t_modif	*get_rule(void)
 {
@@ -51,15 +51,5 @@ int	ft_putstr(char *str)
 			return (-1);
 		i++;
 	}
-	return (i);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str && str[i])
-		i++;
 	return (i);
 }
