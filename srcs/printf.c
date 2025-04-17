@@ -15,16 +15,6 @@
 #include <stdbool.h>
 #include "libftprintf.h"
 #include <stdio.h>
-// int	ft_strlen(char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str && str[i])
-// 		i++;
-// 	return (i);
-// }
-
 
 void	left_align(char *str, va_list lst, int nb_char)
 {
@@ -55,7 +45,7 @@ void	right_align(char *str, va_list lst, int nb_char)
 	call_func(str, lst);
 }
 
-int	sc(char *str, va_list lst)
+int	format(char *str, va_list lst)
 {
 	char	modifiyer[500];
 	va_list	save;
@@ -90,7 +80,7 @@ int	ft_printf(char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			i += sc(&str[i], lst);
+			i += format(&str[i], lst);
 		}
 		else
 			ft_putchar(str[i]);

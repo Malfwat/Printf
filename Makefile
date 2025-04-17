@@ -1,10 +1,10 @@
 NAME	=	libftprintf.a
 
 SRC	=	printf.c \
-		printf2.c \
-		printf3.c \
-		printf4.c \
-		printf5.c \
+		utils.c \
+		utils2.c \
+		print.c \
+		parsing.c \
 		get_len.c \
 		get_len2.c \
 		len.c

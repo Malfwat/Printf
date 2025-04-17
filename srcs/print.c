@@ -72,18 +72,16 @@ void	print_addr(unsigned long addr)
 	ft_puthexa(addr, lower - 1);
 }
 
-void	get_sizes(t_modif *rule, char const *str, int *i)
+int	putstr_size(char *str, int size)
 {
-	if (str[*i] >= '0' && str[*i] <= '9')
-	{
-		if (rule->dot)
-			rule->precision = get_val(str, i);
-		else
-		{
-			rule->width = get_val(str, i);
-			if (!rule->align)
-				rule->align = right;
-		}
-		(*i)--;
-	}
+	int	i;
+
+	if (!str && get_rule()->precision > 5)
+		return (ft_putstr(str));
+	i = 0;
+	while (i < size && str && str[i])
+		ft_putchar(str[i++]);
+	return (i);
 }
+
+

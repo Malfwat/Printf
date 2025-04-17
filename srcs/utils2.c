@@ -19,18 +19,21 @@ int	*get_nb_printed(void)
 	return (&nb);
 }
 
-int	putstr_size(char *str, int size)
+void	get_sizes(t_modif *rule, char const *str, int *i)
 {
-	int	i;
-
-	if (!str && get_rule()->precision > 5)
-		return (ft_putstr(str));
-	i = 0;
-	while (i < size && str && str[i])
-		ft_putchar(str[i++]);
-	return (i);
+	if (str[*i] >= '0' && str[*i] <= '9')
+	{
+		if (rule->dot)
+			rule->precision = get_val(str, i);
+		else
+		{
+			rule->width = get_val(str, i);
+			if (!rule->align)
+				rule->align = right;
+		}
+		(*i)--;
+	}
 }
-
 int	is_in_str(char c, char *format)
 {
 	int	i;
@@ -49,17 +52,15 @@ int	is_in_str(char c, char *format)
 
 int	get_val(const char *nptr, int *i)
 {
-	int	sign;
 	int	value;
 
 	value = 0;
-	sign = 1;
 	while (nptr && (nptr[*i] <= '9' && nptr[*i] >= '0'))
 	{
 		value = value * 10 + nptr[*i] - 48;
 		(*i)++;
 	}
-	return (sign * value);
+	return (value);
 }
 
 int	biggest(int a, int b)
