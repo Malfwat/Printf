@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 15:36:17 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/11 22:51:35 by malfwa           ###   ########.fr       */
+/*   Created: 2025/04/24 11:28:52 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/29 10:21:13 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
+	if (!lst)
+		return ;
 	tmp = *lst;
 	*lst = new;
 	(*lst)->next = tmp;

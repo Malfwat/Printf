@@ -3,60 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 12:26:35 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/10 13:12:44 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 11:25:34 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 11:25:36 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+#include <limits.h>
 
-static int	find_len(const char *str)
+static unsigned int	find_len(unsigned int nbr)
 {
 	unsigned int	i;
 
 	i = 0;
-	while (str && str[i])
+	if (nbr == 0)
+		return (1);
+	while (nbr > 0)
+	{
+		nbr /= 10;
 		i++;
+	}
 	return (i);
 }
 
-static char	*put_at_end(char *str, unsigned int digit)
+static void	fill_str(unsigned int len, long n, char *str, unsigned int *i)
 {
-	char	*res;
-	int		i;
-
-	i = -1;
-	if (digit > 9)
-		str = put_at_end(str, digit / 10);
-	if (str == NULL)
-		return (NULL);
-	res = malloc(sizeof(char) * (find_len(str) + 2));
-	if (res == NULL)
-		return (NULL);
-	while (str && str[++i])
-		res[i] = str[i];
-	res[i] = (digit % 10) + 48;
-	res[i + 1] = 0;
-	free(str);
-	return (res);
+	if (n < 0)
+		n *= -1;
+	if (n > 9)
+		fill_str(len, n / 10, str, i);
+	str[*i] = (n % 10) + 48;
+	(*i)++;
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
+	char			*str;
+	unsigned int	len;
+	unsigned int	i;
 
-	str = malloc(sizeof(*str) * 2);
-	if (str == NULL)
-		return (NULL);
 	if (n < 0)
-		str[0] = '-';
+		len = find_len(-n) + 1;
 	else
-		str[0] = 0;
-	str[1] = 0;
+		len = find_len(n);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len] = 0;
+	i = 0;
 	if (n < 0)
-		return (put_at_end(str, -n));
-	return (put_at_end(str, n));
+		str[i++] = '-';
+	fill_str(len, n, str, &i);
+	return (str);
 }

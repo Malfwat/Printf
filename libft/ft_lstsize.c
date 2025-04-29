@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 15:49:57 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/11 15:53:57 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 12:00:23 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 12:00:25 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	ft_lstsize(t_list *lst)
 	int	i;
 
 	i = 0;
-	while (lst != NULL && ++i)
+	while (lst != NULL)
+	{
 		lst = lst->next;
+		i++;
+	}
 	return (i);
 }

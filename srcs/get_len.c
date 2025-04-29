@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 02:08:42 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 15:12:50 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/28 11:16:48 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	p_size(unsigned long int tmp, int base_len)
 	return (len);
 }
 
-int	get_len(char const type, ...)
+int	get_len(char const *type, ...)
 {
 	va_list			ap;
 	int				len;
@@ -59,20 +59,20 @@ int	get_len(char const type, ...)
 
 	va_start(ap, type);
 	nb = 0;
-	if (type == 's')
+	if (*type == 's')
 		return (get_s_len(ap));
 	base_len = 10;
-	if (type == 'n')
+	if (*type == 'n')
 		nb = get_number(ap);
 	else
 	{
-		len = get_arg(ap, type, &nb, &base_len);
+		len = get_arg(ap, *type, &nb, &base_len);
 		if (len >= 0)
 			return (len);
 	}
 	if (get_rule()->dot && get_rule()->precision < 1 && !nb)
 		return (va_end(ap), 0);
-	len = arg_size(nb, base_len, type);
+	len = arg_size(nb, base_len, *type);
 	return (va_end(ap), len + ((get_rule()->prefix != prefix) \
 	&& get_rule()->prefix));
 }

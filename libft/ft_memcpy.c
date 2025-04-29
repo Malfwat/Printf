@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 14:31:12 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/11 21:26:25 by malfwa           ###   ########.fr       */
+/*   Created: 2025/04/24 12:07:41 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 12:08:03 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	tmp_dest = (char *)dest;
 	tmp_src = (char *)src;
-	i = -1;
-	while (++i < n)
+	i = 0;
+	while (i < n)
+	{
 		tmp_dest[i] = tmp_src[i];
+		i++;
+	}
 	return (dest);
 }

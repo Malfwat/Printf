@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 20:28:30 by malfwa            #+#    #+#             */
-/*   Updated: 2022/11/15 16:17:49 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 12:00:40 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 12:00:42 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	a = (char)c;
 	str = (unsigned char *)s;
-	i = -1;
-	while (s && ++i < n)
-		if (str[i] == a)
-			return (&str[i]);
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		if ((char)str[i] == a)
+			return (str + i);
+		i++;
+	}
 	return (NULL);
 }

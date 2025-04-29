@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 00:04:27 by malfwa            #+#    #+#             */
-/*   Updated: 2022/11/15 12:17:38 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 12:44:34 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 12:50:52 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	x;
-	char	*str;
 
 	i = 0;
 	x = 0;
-	str = (char *)big;
-	while (str && little && str[i + x] && x + i < len && little[x])
+	if (!little || !*little)
+		return ((char *)big);
+	if (!big || !len)
+		return (NULL);
+	while (big[i + x] && x + i < len && little[x])
 	{
-		if (str[i + x] == little[x])
+		if (big[i + x] == little[x])
 			x++;
 		else
 		{
@@ -32,9 +34,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			i++;
 		}
 	}
-	if (little[x] == '\0' || little == NULL || little[0] == 0)
-		return (&str[i]);
-	if (len == 0)
-		return (0);
+	if (!little[x])
+		return ((char *)big + i);
 	return (NULL);
 }

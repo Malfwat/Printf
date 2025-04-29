@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:16:48 by malfwa            #+#    #+#             */
-/*   Updated: 2022/11/08 20:20:09 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 13:04:21 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 13:04:23 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	ft_toupper(int c)
 {

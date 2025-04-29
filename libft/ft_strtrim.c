@@ -3,15 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 19:46:01 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/08 20:23:21 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 13:03:59 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 13:04:01 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
+
+static int	find_len(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 static int	ft_is_in_set(char const *set, char c)
 {
@@ -28,26 +38,27 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned int	i;
 	unsigned int	x;
+	unsigned int	j;
 	char			*str;
 
-	x = 0;
-	i = -1;
-	while (s1 && s1[++i])
-		if (ft_is_in_set(set, s1[i]) == 0)
-			x++;
+	x = find_len(s1) - 1;
+	i = 0;
+	while (ft_is_in_set(set, s1[i]) == 1)
+			i++;
+	if (s1[i] == 0)
+		return (ft_calloc(1, 1));
+	while (ft_is_in_set(set, s1[x]) == 1)
+			x--;
+	x -= i - 1;
 	str = malloc(sizeof(char) * (x + 1));
 	if (str == NULL)
 		return (NULL);
 	str[x] = 0;
-	x = 0;
-	i = -1;
-	while (s1 && s1[++i])
+	j = 0;
+	while (s1 && s1[i] && j < x)
 	{
-		if (ft_is_in_set(set, s1[i]) == 0)
-		{
-			str[x] = s1[i];
-			x++;
-		}
+		str[j] = s1[i + j];
+		j++;
 	}
 	return (str);
 }

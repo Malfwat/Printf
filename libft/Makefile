@@ -1,4 +1,27 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: admoufle <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/04/28 13:09:01 by admoufle          #+#    #+#              #
+#    Updated: 2025/04/28 13:09:40 by admoufle         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		=	../libft.a
+
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                  VARIABLES                                   #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+SRC_DIR		=	./
+
 
 SRC			=	ft_atoi.c		\
 				ft_bzero.c		\
@@ -46,33 +69,54 @@ SRC_BONUS	=	ft_lstnew.c			\
 				ft_lstiter.c		\
 				ft_lstmap.c
 
-OBJ			=	$(SRC:.c=.o)
+OBJ			=	$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
+OBJ_BONUS	=	$(addprefix $(OBJ_DIR), $(SRC_BONUS:.c=.o))
+
+DEPS		=	$(OBJ:.o=.d)
+DEPS		+=	$(OBJ_BONUS:.o=.d)
 
 LC			=	ar rc
 
-CC			=	gcc
+CC			=	cc
 
-CFLAGS		+= -Wall -Werror -Wextra
+CFLAGS		+= -Wall -Werror -Wextra -MMD -MP
 
-.o:.c
-	$(CC) $(CFLAGS) $(OBJ) -c $< -o
+OBJ_DIR		=	.build/
+
+INC			=	-I./
+
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                    RULES                                     #
+#                                                                              #
+#                                                                              #
+################################################################################
 
 all:	$(NAME)
+	
+$(OBJ_DIR):
+	mkdir .build
 
-$(NAME):	$(OBJ)
-	@$(LC) $(NAME) $(OBJ)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c Makefile
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
-bonus:	$(OBJ_BONUS) $(OBJ)
-	@$(LC) $(NAME) $(OBJ) $(OBJ_BONUS)
+
+$(NAME):	$(OBJ_DIR) $(OBJ)
+	$(LC) $(NAME) $(OBJ)
+
+bonus:	$(OBJ_DIR) $(OBJ_BONUS) $(OBJ)
+	$(LC) $(NAME) $(OBJ) $(OBJ_BONUS)
 
 clean:
-	@rm -f $(OBJ) $(OBJ_BONUS)
+	rm -rf $(OBJ_DIR)
 
 fclean:	clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: bonus clean fclean all re
+
+-include $(DEPS)

@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:28:37 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 15:12:29 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/29 10:23:06 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # define FLAG "-+ #0."
 
 # include "libft.h"
-
 
 enum	e_case
 {
@@ -87,13 +86,12 @@ int		*get_nb_printed(void);
 void	get_sizes(t_modif *rule, char const *str, int *i);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
-// int		ft_strlen(char *str);
 int		fill(int size, char c);
 int		putstr_size(char *str, int size);
 int		ui_len(va_list lst, char const type);
 int		i_len(va_list lst, char const type);
 int		s_len(va_list lst, char const type);
-int		get_len(char const type, ...);
+int		get_len(char const *type, ...);
 int		biggest(int a, int b);
 int		ft_printf(char *format, ...) __attribute__((format(printf, 1, 2)));
 int		get_number(va_list ap);

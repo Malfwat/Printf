@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:09:51 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/10 19:01:51 by amouflet         ###   ########.fr       */
+/*   Updated: 2025/04/24 12:27:41 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int	i;
 
-	i = -1;
-	while (s && s[++i])
-		f((unsigned)i, &s[i]);
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		f((unsigned)i, s + i);
+		i++;
+	}
 }

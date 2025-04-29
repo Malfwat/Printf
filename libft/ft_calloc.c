@@ -3,35 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 17:08:19 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/15 16:18:15 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 11:24:39 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 11:24:42 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <limits.h>
 
+void	*zero_size(void)
+{
+	char	*tmp;
+
+	tmp = malloc(sizeof(char));
+	if (tmp)
+		*tmp = 0;
+	return (tmp);
+}
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	max_int;
-	void	*ptr;
 	char	*tmp;
 	size_t	i;
 	size_t	value_asked;
 
-	max_int = ULONG_MAX;
+	max_int = INT_MAX;
 	i = 0;
-	value_asked = nmemb * size;
-	if (nmemb > max_int / size || size > max_int / nmemb
-		|| (value_asked) == 0)
+	if (nmemb == 0 || size == 0)
+		return (zero_size());
+	if (nmemb > max_int / size || size > max_int / nmemb)
 		return (NULL);
-	tmp = malloc((value_asked));
-	if (tmp == NULL)
+	value_asked = nmemb * size;
+	tmp = malloc(value_asked);
+	if (!tmp)
 		return (NULL);
 	while (i < value_asked)
 		tmp[i++] = 0;
-	ptr = tmp;
-	return (ptr);
+	return ((void *)tmp);
 }

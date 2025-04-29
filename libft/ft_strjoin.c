@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 19:31:58 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/14 02:30:47 by malfwa           ###   ########.fr       */
+/*   Created: 2025/04/24 12:32:31 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 12:32:33 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -18,21 +19,23 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 
-	i = 0;
-	j = 0;
-	while (s1 && s1[i])
-		i++;
-	while (s2 && s2[j])
-		j++;
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
 	str = malloc(sizeof(char) * (i + j + 1));
-	if (str == NULL)
-		return (str);
+	if (!str)
+		return (NULL);
 	str[i + j] = 0;
-	i = -1;
-	while (s1 && s1[++i])
+	i = 0;
+	while (s1 && s1[i])
+	{
 		str[i] = s1[i];
-	j = -1;
-	while (s2 && s2[++j])
+		i++;
+	}
+	j = 0;
+	while (s2 && s2[j])
+	{
 		str[i + j] = s2[j];
+		j++;
+	}
 	return (str);
 }

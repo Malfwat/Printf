@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 19:43:16 by malfwa            #+#    #+#             */
-/*   Updated: 2022/11/15 10:20:49 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 12:51:39 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/28 09:49:51 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ char	*ft_strrchr(const char *s, int c)
 	while (str[i])
 	{
 		if (str[i] == c2)
-			tmp = &(str[i]);
+			tmp = str + i;
 		i++;
 	}
-	if (c2 == '\0')
-		tmp = &(str[i]);
+	if (!c2)
+		tmp = str + i;
 	return (tmp);
 }

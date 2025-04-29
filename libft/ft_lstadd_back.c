@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 16:03:58 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/15 13:48:25 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 11:28:46 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 11:28:48 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
+	if (!lst)
+		return ;
 	if (*lst != NULL)
 	{
 		tmp = *lst;
-		while ((*lst)->next != NULL)
-			(*lst) = (*lst)->next;
-		(*lst)->next = new;
-		*lst = tmp;
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
 	else
 		(*lst) = new;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 17:47:37 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/15 13:34:05 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 11:34:47 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 11:35:17 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (lst->next != NULL)
+	while (lst)
 	{
 		f(lst->content);
 		lst = lst->next;
 	}
-	f(lst->content);
 }

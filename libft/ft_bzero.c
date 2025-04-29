@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 14:23:35 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/10 18:12:38 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 11:24:30 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 12:34:56 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	ft_bzero(void *s, size_t n)
 	char	*s1;
 
 	s1 = s;
-	i = -1;
-	while (++i < n)
+	i = 0;
+	while (i < n)
+	{
 		s1[i] = 0;
+		i++;
+	}
 }

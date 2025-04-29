@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amouflet <amouflet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admoufle <admoufle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 18:54:55 by amouflet          #+#    #+#             */
-/*   Updated: 2022/11/10 18:58:11 by amouflet         ###   ########.fr       */
+/*   Created: 2025/04/24 12:24:45 by admoufle          #+#    #+#             */
+/*   Updated: 2025/04/24 12:24:48 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,14 @@ void	ft_putnbr_fd(int n, int fd)
 	char	c;
 
 	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else if (n == 2147483647)
-		write(fd, "2147483647", 10);
-	else
+		return ((void)write(fd, "-2147483648", 11));
+	if (n < 0)
 	{
-		if (n < 0)
-		{
-			n *= -1;
-			write(fd, "-", 1);
-		}
-		if (n >= 10)
-		{
-			ft_putnbr_fd(n / 10, fd);
-		}
-		c = (n % 10 + '0');
-		write(fd, &c, 1);
+		n *= -1;
+		write(fd, "-", 1);
 	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	c = n % 10 + '0';
+	write(fd, &c, 1);
 }

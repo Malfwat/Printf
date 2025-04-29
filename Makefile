@@ -36,16 +36,16 @@ $(NAME): libft.a $(BUILD) $(OBJ)
 	cp libft.a $@
 
 $(BUILD)%.o:	$(SRC_DIR)%.c Makefile
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)  -I./libft
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I./libft 
 
 bonus: $(NAME)
 
 clean:
 	rm -rf $(BUILD)
-	make clean -C libft
+	make clean -C libft/
 
 fclean:	clean
-	make fclean -C libft
+	make fclean -C libft/
 	rm -rf $(NAME)
 
 re: fclean all

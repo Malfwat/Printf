@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:45:13 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 15:12:21 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/29 10:23:58 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include "libftprintf.h"
+#include "libft.h"
 #include <stdio.h>
 
 void	left_align(char *str, va_list lst, int nb_char)

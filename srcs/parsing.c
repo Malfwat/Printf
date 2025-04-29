@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf5.c                                          :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:15:34 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/08 05:15:50 by malfwa           ###   ########.fr       */
+/*   Updated: 2025/04/28 11:15:43 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	mesure_arg(char const *str, va_list lst)
 	if (tmp == s)
 		return (s_len(lst, 's'));
 	if (tmp == p)
-		return (get_len('p', va_arg(lst, unsigned long)) + 2);
+		return (get_len("p", va_arg(lst, unsigned long)) + 2);
 	if (tmp == d)
 		return (i_len(lst, 'n'));
 	if (tmp == i)
