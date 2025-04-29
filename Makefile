@@ -28,12 +28,12 @@ all:	$(NAME)
 $(BUILD):
 	@mkdir -p $@
 
-libft.a:
+$(BUILD)libft.a:
 	make bonus -C libft/
 
-$(NAME): libft.a $(BUILD) $(OBJ)
-	ar rcs -o libft.a $(OBJ)
-	cp libft.a $@
+$(NAME): $(BUILD) $(OBJ) $(BUILD)libft.a
+	ar rcs -o $(BUILD)libft.a $(OBJ)
+	cp $(BUILD)libft.a $@
 
 $(BUILD)%.o:	$(SRC_DIR)%.c Makefile
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I./libft 
@@ -44,7 +44,8 @@ clean:
 	rm -rf $(BUILD)
 	make clean -C libft/
 
-fclean:	clean
+fclean:	
+	rm -rf $(BUILD)
 	make fclean -C libft/
 	rm -rf $(NAME)
 

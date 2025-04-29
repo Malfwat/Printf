@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:45:13 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/29 10:23:58 by admoufle         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:34:23 by admoufle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	ft_printf(char *str, ...)
 {
 	va_list	lst;
 	int		i;
+	int		len;
 
 	va_start(lst, str);
 	i = 0;
@@ -88,5 +89,7 @@ int	ft_printf(char *str, ...)
 		i++;
 	}
 	va_end(lst);
-	return (*get_nb_printed());
+	len = *get_nb_printed();
+	*get_nb_printed() = 0;
+	return (len);
 }
