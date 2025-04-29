@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 04:45:24 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/29 10:22:10 by admoufle         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:12:32 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,6 @@ int	*get_nb_printed(void)
 	static int	nb;
 
 	return (&nb);
-}
-
-void	get_sizes(t_modif *rule, char const *str, int *i)
-{
-	if (str[*i] >= '0' && str[*i] <= '9')
-	{
-		if (rule->dot)
-			rule->precision = get_val(str, i);
-		else
-		{
-			rule->width = get_val(str, i);
-			if (!rule->align)
-				rule->align = right;
-		}
-		(*i)--;
-	}
 }
 
 int	is_in_str(char c, char *format)

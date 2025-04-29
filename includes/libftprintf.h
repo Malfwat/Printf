@@ -6,7 +6,7 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:28:37 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/29 10:23:06 by admoufle         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:21:25 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_modif
 	int				align;
 }					t_modif;
 
+int		format(char *str, va_list lst);
 int		get_modifiyer(char modifiyer[500], char *format);
 t_modif	initialize_t_modif(void);
 void	analyse(t_modif *rule, char const *str, int *i);
@@ -105,5 +106,8 @@ int		ft_puthexa(long long int nb, enum e_case casee);
 int		ft_printnbr(unsigned long int nb, unsigned int base_len, char *base);
 int		mesure_arg(char const *str, va_list lst);
 void	call_func(char *str, va_list lst);
+void	left_align(char *str, va_list lst, int nb_char);
+void	right_align(char *str, va_list lst, int nb_char);
+void	get_sizes(t_modif *rule, char const *str, int *i);
 
 #endif /*LIBFTPRINTF_H*/

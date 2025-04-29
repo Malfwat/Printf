@@ -109,6 +109,9 @@ $(NAME):	$(OBJ_DIR) $(OBJ)
 bonus:	$(OBJ_DIR) $(OBJ_BONUS) $(OBJ)
 	$(LC) $(NAME) $(OBJ) $(OBJ_BONUS)
 
+bonusp:	$(OBJ_DIR) $(OBJ_BONUS) $(OBJ)
+	$(LC) -o ../.build/libft_bonus.a $(OBJ) $(OBJ_BONUS)
+
 clean:
 	rm -rf $(OBJ_DIR)
 

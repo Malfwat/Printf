@@ -6,25 +6,11 @@
 /*   By: malfwa <malfwa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:15:34 by malfwa            #+#    #+#             */
-/*   Updated: 2025/04/28 11:15:43 by admoufle         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:48:15 by malfwa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-int	get_modifiyer(char modifiyer[500], char *format)
-{
-	int	i;
-
-	i = 0;
-	while (!is_in_str(format[i], FORMAT))
-	{
-		modifiyer[i] = format[i];
-		i++;
-	}
-	modifiyer[i] = 0;
-	return (i);
-}
 
 t_modif	initialize_t_modif(void)
 {

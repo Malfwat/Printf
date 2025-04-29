@@ -7,7 +7,13 @@ SRC	=	printf.c \
 		parsing.c \
 		get_len.c \
 		get_len2.c \
+		align.c \
+		get_size_bonus.c \
 		len.c
+
+SRC_M	=	format.c
+
+SRC_B	=  format_bonus.c
 
 CC	=	cc
 
@@ -20,6 +26,8 @@ SRC_DIR	=	srcs/
 BUILD	=	.build/
 
 OBJ	=	$(addprefix $(BUILD), $(SRC:.c=.o))
+OBJ_B	=	$(addprefix $(BUILD), $(SRC_B:.c=.o))
+OBJ_M	=	$(addprefix $(BUILD), $(SRC_M:.c=.o))
 
 DEPS	=	$(OBJ:.o=.d)
 
@@ -31,14 +39,19 @@ $(BUILD):
 $(BUILD)libft.a:
 	make bonus -C libft/
 
-$(NAME): $(BUILD) $(OBJ) $(BUILD)libft.a
-	ar rcs -o $(BUILD)libft.a $(OBJ)
+$(BUILD)libft_bonus.a:
+	make bonusp -C libft/
+
+$(NAME): $(BUILD) $(OBJ) $(OBJ_M) $(BUILD)libft.a
+	ar rcs -o $(BUILD)libft.a $(OBJ) $(OBJ_M)
 	cp $(BUILD)libft.a $@
 
 $(BUILD)%.o:	$(SRC_DIR)%.c Makefile
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I./libft 
 
-bonus: $(NAME)
+bonus: $(BUILD) $(OBJ_B) $(OBJ) $(BUILD)libft_bonus.a
+	ar rcs -o $(BUILD)libft_bonus.a $(OBJ) $(OBJ_B)
+	cp $(BUILD)libft_bonus.a $(NAME)
 
 clean:
 	rm -rf $(BUILD)
