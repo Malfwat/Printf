@@ -8,7 +8,7 @@ SRC	=	printf.c \
 		get_len.c \
 		get_len2.c \
 		align.c \
-		get_size_bonus.c \
+		get_size.c \
 		len.c
 
 SRC_M	=	format.c

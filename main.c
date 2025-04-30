@@ -14,5 +14,6 @@
 
 int	main(void)
 {
-	dprintf(2, "%i\n", ft_printf("test%0.12i\n", 2));
+	ft_printf("%c - %s - %p %d - %i - %u - %x %X %%", 'a', "test", (void *)0xdeadc0de, 20, -20, -1, -1, 200000000);
+	return (0);
 }

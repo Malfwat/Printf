@@ -15,15 +15,16 @@
 
 int	format(char *str, va_list lst)
 {
-	char	modifiyer[500];
+//	char	modifiyer[1];
 
-	str += get_modifiyer(modifiyer, str);
-	if (!is_in_str(modifiyer[0], FORMAT))
-		return (-1);
-	analyse_modifiyer(modifiyer);
+//	modifiyer[0] = 0;
+//	if (!is_in_str(modifiyer[0], FORMAT))
+//		return (-1);
+	//analyse_modifiyer(modifiyer);
+	get_rule()->precision = -1;
 	get_rule()->format = *str;
 	call_func(str, lst);
-	return (ft_strlen(modifiyer));
+	return (/*ft_strlen(modifiyer)*/0);
 }
 
 int	get_modifiyer(char modifiyer[500], char *format_str)
