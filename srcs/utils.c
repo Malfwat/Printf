@@ -23,7 +23,10 @@ t_modif	*get_rule(void)
 int	ft_putchar(char c)
 {
 	if (write(1, &c, 1) < 0)
+	{
+		*get_nb_printed() = -1;
 		return (-1);
+	}
 	*get_nb_printed() += 1;
 	return (1);
 }

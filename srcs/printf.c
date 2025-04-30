@@ -23,9 +23,11 @@ int	ft_printf(char *str, ...)
 	int		i;
 	int		len;
 
-	va_start(lst, str);
 	i = 0;
-	while (str && str[i])
+	if (!str)
+		return (-1);
+	va_start(lst, str);
+	while (str[i] && *get_nb_printed() >= 0)
 	{
 		if (str[i] == '%')
 		{

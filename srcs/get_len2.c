@@ -35,6 +35,11 @@ int	arg_size(long long int nb, int base_len, char const type)
 	return (len);
 }
 
+int	s_c(int tmp)
+{
+	return ((int []){lower, upper}[tmp - x] - 1);
+}
+
 void	call_func(char *str, va_list lst)
 {
 	unsigned int	nb;
@@ -58,8 +63,7 @@ void	call_func(char *str, va_list lst)
 			ft_printnbr(nb, 10, "0123456789");
 	}
 	else if (tmp == x || tmp == X)
-		ft_puthexa(va_arg(lst, unsigned int), \
-		(int []){lower, upper}[tmp - x] - 1);
+		ft_puthexa(va_arg(lst, unsigned int), s_c(tmp));
 	else if (tmp == percent)
 		ft_putchar('%');
 }

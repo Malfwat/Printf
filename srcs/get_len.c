@@ -73,6 +73,6 @@ int	get_len(char const *type, ...)
 	if (get_rule()->dot && get_rule()->precision < 1 && !nb)
 		return (va_end(ap), 0);
 	len = arg_size(nb, base_len, *type);
-	return (va_end(ap), len + ((get_rule()->prefix != prefix) \
-	&& get_rule()->prefix));
+	va_end(ap);
+	return (len + ((get_rule()->prefix != prefix) && get_rule()->prefix));
 }

@@ -44,11 +44,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	x = find_len(s1) - 1;
 	i = 0;
 	while (ft_is_in_set(set, s1[i]) == 1)
-			i++;
+		i++;
 	if (s1[i] == 0)
 		return (ft_calloc(1, 1));
 	while (ft_is_in_set(set, s1[x]) == 1)
-			x--;
+		x--;
 	x -= i - 1;
 	str = malloc(sizeof(char) * (x + 1));
 	if (str == NULL)

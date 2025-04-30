@@ -16,12 +16,13 @@
 
 void	left_align(char *str, va_list lst, int nb_char)
 {
-	int	tmp;
+	int				tmp;
+	enum e_signed	e;
 
 	call_func(str, lst);
+	e = get_rule()->prefix;
 	tmp = get_rule()->width;
-	tmp -= biggest(nb_char, get_rule()->precision \
-	+ (get_rule()->prefix != prefix && get_rule()->prefix));
+	tmp -= biggest(nb_char, get_rule()->precision + (e != prefix && e));
 	fill(tmp, ' ');
 }
 

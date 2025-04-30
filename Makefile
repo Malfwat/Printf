@@ -45,7 +45,7 @@ $(BUILD)libft_bonus.a:
 $(NAME): $(BUILD) $(OBJ) $(OBJ_M) $(BUILD)libft.a
 	ar rcs -o $(BUILD)libft.a $(OBJ) $(OBJ_M)
 	cp $(BUILD)libft.a $@
-	touch $(SRC_DIR)$(SRC_B)
+	@touch $(SRC_DIR)$(SRC_B)
 
 $(BUILD)%.o:	$(SRC_DIR)%.c Makefile
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I./libft 
@@ -53,7 +53,7 @@ $(BUILD)%.o:	$(SRC_DIR)%.c Makefile
 bonus: $(BUILD) $(OBJ_B) $(OBJ) $(BUILD)libft_bonus.a
 	ar rcs -o $(BUILD)libft_bonus.a $(OBJ) $(OBJ_B)
 	cp $(BUILD)libft_bonus.a $(NAME)
-	touch $(SRC_DIR)$(SRC_M)
+	@touch $(SRC_DIR)$(SRC_M)
 
 clean:
 	rm -rf $(BUILD)
