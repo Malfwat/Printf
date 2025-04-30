@@ -79,7 +79,7 @@ int	putstr_size(char *str, int size)
 	if (!str && get_rule()->precision > 5)
 		return (ft_putstr(str));
 	i = 0;
-	while (i != size && str && str[i])
+	while (i < size && str && str[i])
 		ft_putchar(str[i++]);
 	return (i);
 }

@@ -78,7 +78,7 @@ typedef struct s_modif
 }					t_modif;
 
 int		format(char *str, va_list lst);
-int		get_modifiyer(char modifiyer[500], char *format);
+int		get_modifiyer(char modifiyer[256], char *format);
 t_modif	initialize_t_modif(void);
 void	analyse(t_modif *rule, char const *str, int *i);
 t_modif	analyse_modifiyer(char const *str);

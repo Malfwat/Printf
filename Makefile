@@ -1,6 +1,6 @@
 NAME	=	libftprintf.a
 
-SRC	=	printf.c \
+SRC	=	format.c \
 		utils.c \
 		utils2.c \
 		print.c \
@@ -11,9 +11,9 @@ SRC	=	printf.c \
 		get_size.c \
 		len.c
 
-SRC_M	=	format.c
+SRC_M	=	main.c
 
-SRC_B	=  format_bonus.c
+SRC_B	=  main_bonus.c
 
 CC	=	cc
 
