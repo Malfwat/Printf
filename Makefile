@@ -31,6 +31,8 @@ OBJ_M	=	$(addprefix $(BUILD), $(SRC_M:.c=.o))
 
 DEPS	=	$(OBJ:.o=.d)
 
+TESTER	=	ft_printf_tester
+
 all:	$(NAME)
 
 $(BUILD):
@@ -53,7 +55,6 @@ $(BUILD)%.o:	$(SRC_DIR)%.c Makefile
 bonus: $(BUILD) $(OBJ_B) $(OBJ) $(BUILD)libft_bonus.a
 	ar rcs -o $(BUILD)libft_bonus.a $(OBJ) $(OBJ_B)
 	cp $(BUILD)libft_bonus.a $(NAME)
-	@touch $(SRC_DIR)$(SRC_M)
 
 clean:
 	rm -rf $(BUILD)
@@ -62,9 +63,20 @@ clean:
 fclean:	
 	rm -rf $(BUILD)
 	make fclean -C libft/
+	rm -rf $(TESTER)
 	rm -rf $(NAME)
 
 re: fclean all
+
+$(TESTER):
+	git clone git@github.com:paulo-santana/ft_printf_tester.git
+
+test_b:	$(TESTER)
+	make && make bonus && cd $< && sh test
+
+test_m: $(TESTER)
+	make & cd $< && sh test m
+
 
 .PHONY: re all fclean clean bonus
 
